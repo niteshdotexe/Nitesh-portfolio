@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitesh Kumar Maurya · Engineer, Builder, Work in Progress</title>
+  <meta name="description" content="Portfolio of Nitesh Kumar Maurya — engineering student in Pune building software solutions and learning in public.">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --paper: #faf9f6;
+      --accent: #206b43;
+      --accent-dark: #185233;
+      --accent-light: #e6f48b;
+      --muted: #6b6b6b;
+      --rule: #e0ddd6;
+      --danger: #b3261e;
+      --success: #206b43;
+      --font-heading: Georgia, 'Times New Roman', serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --max: 1100px;
+      --gutter: 2rem;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    [hidden] { display: none !important; }
+
+    .skip { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: 0.75rem 1.5rem; z-index: 100; font-size: 0.9rem; }
+    .skip:focus { left: 1rem; top: 1rem; }
+
+    /* ---------- HEADER ---------- */
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap; gap: 1.5rem; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--ink); cursor: pointer; }
+    .brand-photo { width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: var(--accent-light); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.4rem; font-style: italic; flex-shrink: 0; overflow: hidden; }
+    .brand-name { font-family: var(--font-heading); font-size: 1.5rem; font-style: italic; letter-spacing: -0.02em; line-height: 1; }
+    .brand-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.25; color: var(--muted); }
+    .nav { display: flex; gap: 1.75rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .nav a { text-decoration: none; color: var(--ink); padding-bottom: 0.25rem; border-bottom: 1px solid transparent; transition: border-color 0.2s; cursor: pointer; }
+    .nav a:hover { border-bottom-color: var(--accent); }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 5rem 0 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 1.25rem; font-weight: 600; }
+    .hero h1 { font-family: var(--font-heading); font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-copy { font-size: 1.05rem; color: var(--muted); max-width: 42ch; margin-bottom: 2rem; }
+    .hero-right { padding-top: 3.5rem; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat { border-top: 2px solid var(--accent); padding-top: 0.75rem; }
+    .stat-num { font-family: var(--font-heading); font-size: 2.6rem; line-height: 1; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 0.35rem; }
+    .socials { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .social-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--ink); font-size: 0.85rem; border: 1px solid var(--rule); padding: 0.5rem 1rem; border-radius: 999px; transition: background 0.2s, border-color 0.2s; cursor: pointer; }
+    .social-link:hover { background: var(--accent-light); border-color: var(--accent-light); }
+    .social-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.7; }
+
+    /* ---------- BUTTONS & CV ---------- */
+    .cv-row { margin-top: 1.5rem; }
+    .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 0.75rem 1.6rem; font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; }
+    .btn-outline:hover { background: var(--accent); color: var(--paper); }
+    .btn-solid { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--accent); color: var(--paper); border: 1px solid var(--accent); padding: 0.75rem 1.75rem; font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+    .btn-solid:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-solid:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-solid svg, .btn-outline svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ---------- SECTION ---------- */
+    .section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+    .section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2.5rem; }
+    .section-num { font-family: var(--font-heading); font-size: 0.9rem; color: var(--accent); font-style: italic; }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); font-weight: 600; }
+    .section h2 { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .section h2 em { font-style: italic; color: var(--accent); }
+    .section-copy { max-width: 60ch; color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .skill-item { background: var(--paper); padding: 1.25rem 1.5rem; }
+    .skill-item h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.5rem; font-weight: 600; }
+    .skill-item p { font-size: 0.95rem; color: var(--ink); }
+
+    /* ---------- PROJECTS ---------- */
+    .project-grid { display: grid; gap: 0; }
+    .project { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1.5rem; padding: 2rem 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .project:first-of-type { border-top: 1px solid var(--rule); }
+    .project-index { font-family: var(--font-heading); font-size: 0.9rem; color: var(--accent); font-style: italic; padding-top: 0.25rem; }
+    .project-link { display: grid; grid-template-columns: 280px 1fr; gap: 1.75rem; text-decoration: none; color: inherit; align-items: start; cursor: pointer; }
+    .project-link:hover .project-title { color: var(--accent); }
+    .project-link:hover .project-cta { border-bottom-color: var(--accent); }
+    .project-body h3, .project-title { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; transition: color 0.2s; }
+    .project-body p { color: var(--muted); font-size: 0.95rem; max-width: 65ch; margin-bottom: 0.75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.6rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--muted); }
+    .project-cta { display: inline-block; margin-top: 1rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); border-bottom: 1px solid transparent; padding-bottom: 0.15rem; transition: border-color 0.2s; }
+
+    /* ---------- PROJECT PREVIEW MOCKUPS (CARDS) ---------- */
+    .preview { aspect-ratio: 16 / 10; background: linear-gradient(135deg, #efece5, #e3dfd5); border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); padding: 1rem; display: flex; align-items: center; justify-content: center; }
+    .preview-window { background: white; border-radius: 6px; width: 100%; height: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; font-size: 0.7rem; color: var(--ink); }
+    .preview-window > *:not(.preview-bar) { flex: 1; min-height: 0; }
+    .preview-bar { background: #f5f3ee; padding: 0.4rem 0.6rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ece9e2; flex-shrink: 0; }
+    .preview-dots { display: flex; gap: 0.3rem; }
+    .preview-dots span { width: 6px; height: 6px; border-radius: 50%; background: #d4d0c8; }
+    .preview-bar-title { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+    .prev-todo { padding: 0.6rem 0.75rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .prev-todo .task { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; }
+    .prev-todo .task.done { color: var(--muted); text-decoration: line-through; }
+    .prev-todo .cb { width: 10px; height: 10px; border: 1px solid #cfcbc2; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.55rem; color: white; flex-shrink: 0; }
+    .prev-todo .task.done .cb { background: var(--accent); border-color: var(--accent); }
+
+    .prev-weather { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; background: linear-gradient(160deg, #d6e8f5, #f3e9c8); }
+    .prev-weather .sun { font-size: 1.6rem; }
+    .prev-weather .temp { font-size: 1.3rem; font-family: var(--font-heading); }
+    .prev-weather .city { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+
+    .prev-calc { padding: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; background: #1f2937; }
+    .prev-calc .display { background: #0f172a; color: var(--accent-light); padding: 0.4rem 0.5rem; text-align: right; font-family: var(--font-mono); font-size: 0.8rem; border-radius: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .prev-calc .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.25rem; flex: 1; }
+    .prev-calc .key { background: #374151; color: #e5e7eb; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; border: none; }
+    .prev-calc .key.op { background: var(--accent); color: white; }
+
+    .prev-guess { padding: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center; background: #f8f6f1; }
+    .prev-guess .guess-text { font-size: 0.6rem; color: var(--muted); text-align: center; }
+    .prev-guess .guess-input { background: white; border: 1px solid var(--rule); border-radius: 3px; padding: 0.35rem 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; text-align: center; }
+    .prev-guess .guess-hint { font-size: 0.6rem; color: var(--accent); text-align: center; font-weight: 600; }
+
+    .prev-grade { padding: 0.6rem 0.75rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .prev-grade .grade-row { display: flex; justify-content: space-between; font-size: 0.65rem; padding: 0.25rem 0; border-bottom: 1px dashed #eee; }
+    .prev-grade .grade-row:last-child { border-bottom: none; }
+    .prev-grade .grade { font-family: var(--font-heading); color: var(--accent); font-size: 0.7rem; font-weight: 600; }
+
+    .prev-notes { padding: 0.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; align-content: start; }
+    .prev-notes .note { border-radius: 3px; padding: 0.4rem; font-size: 0.55rem; color: #333; overflow: hidden; position: relative; }
+    .prev-notes .n1 { background: #fef3c7; }
+    .prev-notes .n2 { background: #dbeafe; }
+    .prev-notes .n3 { background: #dcfce7; grid-column: 1 / -1; }
+
+    /* ---------- INTERACTIVE DEMO STYLES (DETAIL VIEW) ---------- */
+    .detail-preview .preview { aspect-ratio: auto; min-height: 320px; padding: 1.5rem; }
+    .detail-preview .preview-window { min-height: 280px; font-size: 0.9rem; }
+    .demo-toolbar { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .demo-input { flex: 1; padding: 0.45rem 0.65rem; border: 1px solid var(--rule); border-radius: 4px; font-family: inherit; font-size: 0.85rem; }
+    .demo-btn { background: var(--accent); color: white; border: none; border-radius: 4px; padding: 0.45rem 0.85rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; }
+    .demo-btn:hover { background: var(--accent-dark); }
+    .demo-btn.secondary { background: #e5e7eb; color: #1f2937; }
+    .demo-list { display: flex; flex-direction: column; gap: 0.45rem; max-height: 180px; overflow-y: auto; }
+    .demo-item { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.5rem; background: #faf9f6; border: 1px solid #eee; border-radius: 4px; font-size: 0.85rem; }
+    .demo-item-left { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; flex: 1; }
+    .demo-del { background: transparent; border: none; color: var(--danger); cursor: pointer; font-size: 0.9rem; padding: 0 0.3rem; }
+    .detail-preview .prev-calc .display { font-size: 1.35rem; padding: 0.65rem 0.85rem; }
+    .detail-preview .prev-calc .key { font-size: 0.95rem; cursor: pointer; padding: 0.6rem 0; transition: filter 0.15s; }
+    .detail-preview .prev-calc .key:hover { filter: brightness(1.2); }
+
+    /* ---------- CONTACT ---------- */
+    .contact-inner { max-width: 60ch; }
+    .contact-email { font-family: var(--font-heading); font-size: 1.4rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); padding-bottom: 0.15rem; display: inline-block; }
+    .contact-email:hover { border-bottom-color: var(--accent); }
+    .contact-note { font-size: 0.9rem; color: var(--muted); margin-top: 1rem; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 0.85rem; }
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .field label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .field input, .field textarea { font-family: var(--font-body); font-size: 0.95rem; padding: 0.75rem 1rem; border: 1px solid var(--rule); background: transparent; color: var(--ink); outline: none; transition: border-color 0.2s; width: 100%; }
+    .field input:focus, .field textarea:focus { border-color: var(--accent); }
+    .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--danger); }
+    .field-error { font-size: 0.75rem; color: var(--danger); min-height: 1em; }
+    .form-status { font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2em; line-height: 1.4; }
+    .form-status.ok { color: var(--success); }
+    .form-status.err { color: var(--danger); }
+    .hp { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; }
+
+    /* ---------- MODAL ---------- */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 200; padding: 1.5rem; }
+    .modal.is-open { display: flex; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(26,26,26,0.5); backdrop-filter: blur(2px); }
+    .modal-panel { position: relative; background: var(--paper); max-width: 480px; width: 100%; padding: 2.5rem; border: 1px solid var(--rule); box-shadow: 0 20px 60px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+    .modal-panel .section-head { margin-bottom: 1rem; }
+    .modal-panel h3 { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .modal-panel h3 em { font-style: italic; color: var(--accent); }
+    .modal-copy { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; color: var(--muted); cursor: pointer; line-height: 1; padding: 0.25rem; }
+    .modal-close:hover { color: var(--ink); }
+
+    /* ---------- FOOTER ---------- */
+    .footer { padding: 2.5rem 0; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; gap: 1rem; }
+    .footer a { color: var(--accent); text-decoration: none; cursor: pointer; }
+
+    /* ---------- PROJECT DETAIL PAGE ---------- */
+    .detail-hero { padding: 4rem 0 2rem; }
+    .detail-back { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; cursor: pointer; }
+    .detail-back:hover { color: var(--accent); }
+    .detail-hero h1 { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+    .detail-tagline { font-size: 1.1rem; color: var(--muted); max-width: 60ch; margin-bottom: 1.5rem; }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .detail-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+    .detail-preview { margin: 2rem 0; }
+    .detail-section { padding: 3rem 0; border-top: 1px solid var(--rule); }
+    .detail-section h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+    .detail-section h2 em { font-style: italic; color: var(--accent); }
+    .detail-section p { color: var(--muted); max-width: 65ch; margin-bottom: 1rem; }
+    .detail-section ul { max-width: 65ch; color: var(--muted); padding-left: 1.25rem; margin-bottom: 1rem; }
+    .detail-section li { margin-bottom: 0.4rem; }
+    .code-block { background: #1f2937; color: #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; margin: 1rem 0; white-space: pre; }
+    .code-block .kw { color: var(--accent-light); }
+    .code-block .str { color: #a5d6a7; }
+    .code-block .com { color: #9ca3af; font-style: italic; }
+    .detail-nav { display: flex; justify-content: space-between; gap: 1rem; padding: 2rem 0; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+    .detail-nav a { text-decoration: none; color: var(--ink); font-size: 0.9rem; cursor: pointer; }
+    .detail-nav a:hover { color: var(--accent); }
+    .detail-nav .label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.25rem; }
+    .detail-cta { padding: 3rem 0; text-align: center; border-top: 1px solid var(--rule); }
+    .detail-cta h2 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 400; margin-bottom: 1rem; }
+    .detail-cta a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-light); cursor: pointer; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 0 2.5rem; }
+      .hero-right { padding-top: 0; }
+      .project-link { grid-template-columns: 1fr; }
+      .project { grid-template-columns: 1fr; gap: 0.5rem; }
+      .project-index { padding-top: 0; }
+    }
+    @media (max-width: 500px) {
+      :root { --gutter: 1.25rem; }
+      .header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .nav { gap: 1.25rem; font-size: 0.75rem; }
+      .stat-num { font-size: 2rem; }
+      .modal-panel { padding: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Hidden iframe for fallback background form submission -->
+  <iframe name="hiddenFormFrame" id="hiddenFormFrame" style="display:none;" aria-hidden="true"></iframe>
+
+  <!-- ============ HOME VIEW ============ -->
+  <div id="page-home">
+
+    <header class="wrap header">
+      <a class="brand" href="#top" aria-label="Nitesh Kumar Maurya home">
+        <span class="brand-photo" aria-hidden="true">NM</span>
+        <span class="brand-name">nitesh.</span>
+        <span class="brand-label">work in<br>progress</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">My story</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="wrap" id="main" tabindex="-1">
+
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <p class="eyebrow">Student &amp; Future Engineer. Builder. Work in progress.</p>
+          <h1 id="hero-title">Building solutions.<br><em>And a future.</em></h1>
+          <p class="hero-copy">
+            Hi, I'm Nitesh. I'm an engineering student in Pune, turning ideas into
+            working software and learning in public along the way.
+          </p>
+          <div class="socials">
+            <a class="social-link" href="mailto:niteshmaurya080@gmail.com" aria-label="Email Nitesh">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+              <span>Email</span>
+            </a>
+            <a class="social-link" href="https://github.com/nitesh-147" target="_blank" rel="noopener noreferrer" aria-label="Nitesh on GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.5 2.3 1.07 2.86.82.09-.64.35-1.07.63-1.32-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 7.8c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path></svg>
+              <span>GitHub</span>
+            </a>
+            <a class="social-link" href="https://linkedin.com/in/nitesh-kumar-maurya" target="_blank" rel="noopener noreferrer" aria-label="Nitesh on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle><path d="M10 9h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v6h-4v-5c0-1.5-.5-2.5-2-2.5S14 13.5 14 15v6h-4z"></path></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <div class="cv-row">
+            <button type="button" class="btn-solid" data-download-cv>
+              Download CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-num">6</div><div class="stat-label">Projects completed</div></div>
+            <div class="stat"><div class="stat-num">1</div><div class="stat-label">Year of learning</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="section-head"><span class="section-num">01 /</span><span class="section-label">A little about me</span></div>
+        <h2 id="about-title">Still under construction.</h2>
+        <p class="section-copy">
+          I'm an engineering undergrad in Pune, splitting my time between coursework,
+          software projects, and hands-on hardware tinkering. I learn best by building
+          small, functional tools from scratch—from browser apps and REST APIs to C++
+          and Python utilities—and documenting what breaks along the way.
+        </p>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="section-head"><span class="section-num">02 /</span><span class="section-label">Expertise</span></div>
+        <h2 id="skills-title">Skills &amp; technologies.</h2>
+        <div class="skills-grid">
+          <div class="skill-item"><h3>Frontend</h3><p>HTML · CSS · JavaScript</p></div>
+          <div class="skill-item"><h3>Programming</h3><p>C · C++ · Python</p></div>
+          <div class="skill-item"><h3>Backend &amp; DB</h3><p>Node.js · REST APIs · MongoDB</p></div>
+          <div class="skill-item"><h3>Tools &amp; Workflow</h3><p>Git · GitHub · Linux</p></div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-head"><span class="section-num">03 /</span><span class="section-label">Selected work</span></div>
+        <h2 id="projects-title">Featured projects.</h2>
+
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-index">01</div>
+            <a class="project-link" href="#/project/todo-list">
+              <div class="preview-slot" data-preview="todo"></div>
+              <div class="project-body">
+                <h3 class="project-title">To-Do List App</h3>
+                <p>A simple to-do list where you can add, check off, and delete tasks. Built this to practice DOM manipulation and local storage.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-index">02</div>
+            <a class="project-link" href="#/project/weather">
+              <div class="preview-slot" data-preview="weather"></div>
+              <div class="project-body">
+                <h3 class="project-title">Weather Checker</h3>
+                <p>Enter a city name and it shows the current temperature and weather. Took me a while to figure out fetch() but finally got it working.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-index">03</div>
+            <a class="project-link" href="#/project/calculator">
+              <div class="preview-slot" data-preview="calculator"></div>
+              <div class="project-body">
+                <h3 class="project-title">Calculator</h3>
+                <p>A basic calculator that does addition, subtraction, multiplication and division. Made this as one of my first projects while learning JS.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-index">04</div>
+            <a class="project-link" href="#/project/guess">
+              <div class="preview-slot" data-preview="guess"></div>
+              <div class="project-body">
+                <h3 class="project-title">Number Guessing Game</h3>
+                <p>A small C++ console game where the computer picks a random number and you have to guess it. Tells you if your guess is too high or too low.</p>
+                <div class="tags"><span class="tag">C++</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-index">05</div>
+            <a class="project-link" href="#/project/grade">
+              <div class="preview-slot" data-preview="grade"></div>
+              <div class="project-body">
+                <h3 class="project-title">Student Grade Manager</h3>
+                <p>A Python script that takes student names and marks, calculates averages and assigns grades. Made this for a college assignment.</p>
+                <div class="tags"><span class="tag">Python</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-index">06</div>
+            <a class="project-link" href="#/project/notes">
+              <div class="preview-slot" data-preview="notes"></div>
+              <div class="project-body">
+                <h3 class="project-title">Personal Notes App</h3>
+                <p>A notes app where you can create, edit and delete notes. Data is stored in MongoDB. My first time using a database.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">MongoDB</span></div>
+                <span class="project-cta">View &amp; try project →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="section-head"><span class="section-num">04 /</span><span class="section-label">Get in touch</span></div>
+        <h2 id="contact-title">Let's work together.</h2>
+        <div class="contact-inner">
+          <p class="section-copy" style="margin-bottom:1rem;">
+            Have a project in mind? I'd love to hear about it. Drop me a line and
+            let's create something amazing.
+          </p>
+          <a class="contact-email" href="mailto:niteshmaurya080@gmail.com">niteshmaurya080@gmail.com</a>
+          <div class="cta-row">
+            <button class="btn-outline" id="openConnect" type="button">Let me connect with you →</button>
+          </div>
+          <p class="contact-note">Drop your name and email and I'll reach out to you personally.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="wrap footer">
+      <span>© 2026 Nitesh Kumar Maurya. All rights reserved. Designed &amp; Built with passion</span>
+      <span><a href="#top">Back to top ↑</a></span>
+    </footer>
+  </div>
+
+  <!-- ============ PROJECT DETAIL VIEW ============ -->
+  <div id="page-project" hidden>
+    <header class="wrap header">
+      <a class="brand" href="#top" aria-label="Nitesh Kumar Maurya home">
+        <span class="brand-photo" aria-hidden="true">NM</span>
+        <span class="brand-name">nitesh.</span>
+        <span class="brand-label">work in<br>progress</span>
+      </a>
+      <nav class="nav" aria-label="Project navigation">
+        <a href="#top">Home</a>
+        <a href="#projects">All projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="wrap" id="project-main" tabindex="-1">
+      <div class="detail-hero">
+        <a class="detail-back" href="#projects">← Back to all projects</a>
+        <div id="detailContent"></div>
+      </div>
+    </main>
+
+    <footer class="wrap footer">
+      <span>© 2026 Nitesh Kumar Maurya. All rights reserved. Designed &amp; Built with passion</span>
+      <span><a href="#top">Back to home ↑</a></span>
+    </footer>
+  </div>
+
+  <!-- ============ CONNECT MODAL ============ -->
+  <div class="modal" id="connectModal" aria-hidden="true" role="dialog" aria-labelledby="connectTitle" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+      <div class="section-head"><span class="section-num">—</span><span class="section-label">Connect</span></div>
+      <h3 id="connectTitle">Let's <em>connect.</em></h3>
+      <p class="modal-copy">Drop your name and email below and I'll reach out to you personally.</p>
+      <form class="contact-form"
+            id="connectForm"
+            action="https://formsubmit.co/niteshmaurya080@gmail.com"
+            method="POST"
+            target="hiddenFormFrame"
+            novalidate>
+        <div class="field">
+          <label for="c-name">Your name</label>
+          <input type="text" id="c-name" name="name" autocomplete="name" placeholder="Your name" required>
+          <span class="field-error" data-error="name"></span>
+        </div>
+        <div class="field">
+          <label for="c-email">Your email</label>
+          <input type="email" id="c-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          <span class="field-error" data-error="email"></span>
+        </div>
+
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New connection request from your portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="form_type" value="connect">
+
+        <button type="submit" class="btn-solid" data-label="Send request">Send request</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       1. PROJECT DATA
+       ============================================================ */
+    const PROJECTS = {
+      "todo-list": {
+        num: "01",
+        title: "To-Do List App",
+        tagline: "A simple to-do list where you can add, check off, and delete tasks.",
+        description: "Built this to practice DOM manipulation and local storage. Try adding, checking off, or deleting tasks in the interactive window below!",
+        features: [
+          "Add new tasks with a single click or Enter key",
+          "Mark tasks as complete or incomplete",
+          "Delete tasks you no longer need",
+          "Tasks persist in the browser via localStorage"
+        ],
+        tech: ["HTML", "CSS", "JavaScript"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "This was one of my first real projects. I wanted to understand how the DOM works — how to create elements, attach event listeners, and update the page without reloading. I also learned how to use localStorage to keep tasks around after refreshing.",
+        snippet: `<span class="com">// Save tasks to localStorage</span>
+<span class="kw">function</span> saveTasks() {
+  localStorage.setItem(<span class="str">"tasks"</span>, JSON.stringify(tasks));
+}
+
+<span class="com">// Add a new task</span>
+<span class="kw">function</span> addTask(text) {
+  tasks.push({ text, done: <span class="kw">false</span> });
+  saveTasks();
+  render();
+}`,
+        preview: "todo"
+      },
+      "weather": {
+        num: "02",
+        title: "Weather Checker",
+        tagline: "Enter a city name and get the current temperature and conditions.",
+        description: "A small app that fetches weather data by city. Test it in the interactive preview below with cities like Pune, Mumbai, Delhi, or London!",
+        features: [
+          "Search weather by city name",
+          "Shows temperature, condition and icon",
+          "Handles any city name gracefully",
+          "Uses async/await with the Fetch API"
+        ],
+        tech: ["HTML", "CSS", "JavaScript"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "The biggest learning here was asynchronous JavaScript. I had to understand how promises, async/await, and error handling work together. I also learned to read API documentation and parse JSON responses.",
+        snippet: `<span class="com">// Fetch weather from OpenWeatherMap</span>
+<span class="kw">async function</span> getWeather(city) {
+  <span class="kw">const</span> res = <span class="kw">await</span> fetch(
+    <span class="str">"https://api.openweathermap.org/data/2.5/weather?q="</span>
+    + encodeURIComponent(city) + <span class="str">"&appid=API_KEY"</span>
+  );
+  <span class="kw">const</span> data = <span class="kw">await</span> res.json();
+  <span class="kw">return</span> data.main.temp;
+}`,
+        preview: "weather"
+      },
+      "calculator": {
+        num: "03",
+        title: "Calculator",
+        tagline: "A basic calculator for addition, subtraction, multiplication and division.",
+        description: "One of my first projects while learning JavaScript. Click any button on the keypad below to perform live calculations!",
+        features: [
+          "Supports +, −, × and ÷",
+          "Clear (C) and decimal support",
+          "Interactive keypad buttons",
+          "Prevents invalid operations like divide by zero"
+        ],
+        tech: ["HTML", "CSS", "JavaScript"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "This project taught me how to manage state without a framework — keeping track of the current number, the previous number, and the operator in plain variables. I also learned about event delegation by attaching one listener to the keypad container.",
+        snippet: `<span class="com">// Handle a key press</span>
+<span class="kw">function</span> press(key) {
+  <span class="kw">if</span> (key === <span class="str">"C"</span>) { current = <span class="str">"0"</span>; }
+  <span class="kw">else if</span> (key === <span class="str">"="</span>) { current = String(calculate()); }
+  <span class="kw">else</span> { current = current === <span class="str">"0"</span> ? key : current + key; }
+  display.textContent = current;
+}`,
+        preview: "calculator"
+      },
+      "guess": {
+        num: "04",
+        title: "Number Guessing Game",
+        tagline: "A C++ console game where you guess a random number between 1 and 100.",
+        description: "The computer picks a random number between 1 and 100 and tells you if your guess is too high or too low. Play a round right below!",
+        features: [
+          "Random number generated each game",
+          "Hints: too high / too low",
+          "Tracks number of attempts",
+          "Replay option after each round"
+        ],
+        tech: ["C++"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "This was my first real C++ program outside of class. I learned how to use rand() and srand(time(0)) to generate random numbers, and how to structure a game loop with input validation.",
+        snippet: `<span class="com">// Core game loop</span>
+<span class="kw">int</span> target = rand() % 100 + 1;
+<span class="kw">int</span> guess = 0, tries = 0;
+<span class="kw">while</span> (guess != target) {
+  cin >> guess; tries++;
+  <span class="kw">if</span> (guess < target) cout << <span class="str">"Too low!"</span>;
+  <span class="kw">else if</span> (guess > target) cout << <span class="str">"Too high!"</span>;
+}`,
+        preview: "guess"
+      },
+      "grade": {
+        num: "05",
+        title: "Student Grade Manager",
+        tagline: "A Python script that calculates averages and assigns grades.",
+        description: "Takes student names and marks, calculates averages, and assigns letter grades. Add a student and score in the live demo below!",
+        features: [
+          "Add students and their marks",
+          "Calculates averages per student",
+          "Assigns grades based on thresholds",
+          "Saves results to a structured list"
+        ],
+        tech: ["Python"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "This project helped me get comfortable with Python dictionaries, functions and file I/O. I also practised writing clean, readable code by separating logic into small functions like add_student(), calculate_average() and assign_grade().",
+        snippet: `<span class="com"># Assign a grade based on average marks</span>
+<span class="kw">def</span> assign_grade(avg):
+    <span class="kw">if</span> avg >= 90: <span class="kw">return</span> <span class="str">"A"</span>
+    <span class="kw">elif</span> avg >= 80: <span class="kw">return</span> <span class="str">"B+"</span>
+    <span class="kw">elif</span> avg >= 70: <span class="kw">return</span> <span class="str">"B"</span>
+    <span class="kw">else</span>: <span class="kw">return</span> <span class="str">"C"</span>`,
+        preview: "grade"
+      },
+      "notes": {
+        num: "06",
+        title: "Personal Notes App",
+        tagline: "Create, edit and delete notes — stored in MongoDB.",
+        description: "A notes app where you can create and delete sticky notes. Try adding or deleting a note in the interactive demo below!",
+        features: [
+          "Create and delete notes",
+          "Notes stored in MongoDB",
+          "REST API for CRUD operations",
+          "Simple, distraction-free UI"
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "MongoDB"],
+        repoUrl: "https://github.com/nitesh-147",
+        details: "This was a big step up from local storage. I learned how to model data in MongoDB, set up an Express server, and connect the frontend to a real API using fetch. Debugging CORS issues was a rite of passage.",
+        snippet: `<span class="com">// Express route to fetch all notes</span>
+app.get(<span class="str">"/api/notes"</span>, <span class="kw">async</span> (req, res) => {
+  <span class="kw">const</span> notes = <span class="kw">await</span> Note.find().sort({ createdAt: -1 });
+  res.json(notes);
+});
+
+<span class="com">// Create a new note</span>
+app.post(<span class="str">"/api/notes"</span>, <span class="kw">async</span> (req, res) => {
+  <span class="kw">const</span> note = <span class="kw">await</span> Note.create(req.body);
+  res.status(201).json(note);
+});`,
+        preview: "notes"
+      }
+    };
+
+    const PROJECT_ORDER = ["todo-list", "weather", "calculator", "guess", "grade", "notes"];
+
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    /* ============================================================
+       2. UPLOADED RESUME PDF GENERATOR ("Nitesh Resume.pdf")
+       ============================================================ */
+    function downloadResumePDF() {
+      const lines = [
+        "BT /F1 18 Tf 50 775 Td (NITESH KUMAR MAURYA) Tj ET",
+        "BT /F2 11 Tf 50 756 Td (Laxmi Nagar, Kondhwa BK. Pune- 411048) Tj ET",
+        "BT /F2 11 Tf 50 740 Td (niteshmaury080@gmail.com) Tj ET",
+        "BT /F2 11 Tf 50 724 Td (Mobile-8468834582) Tj ET",
+        "50 712 m 545 712 l S",
+
+        "BT /F1 13 Tf 50 690 Td (Career Objectives:) Tj ET",
+        "BT /F2 11 Tf 50 672 Td (To secure a challenging and growth-oriented position in a reputed organization that utilizes and) Tj ET",
+        "BT /F2 11 Tf 50 656 Td (further improved my technical and administrative skills to make me a competent professional.) Tj ET",
+
+        "BT /F1 13 Tf 50 628 Td (Qualification:) Tj ET",
+        "BT /F2 11 Tf 50 610 Td (1. SSC has been passed from Iqra School in year 2024.) Tj ET",
+        "BT /F2 11 Tf 50 594 Td (2. HSC has been passed from Vishwakarma Arts, Commerce & Science Jr. College in year 2026.) Tj ET",
+
+        "BT /F1 13 Tf 50 566 Td (Skills:) Tj ET",
+        "BT /F2 11 Tf 60 548 Td (> Microsoft word, excel, power point.) Tj ET",
+        "BT /F2 11 Tf 60 532 Td (> Cascading Style Sheets.) Tj ET",
+        "BT /F2 11 Tf 60 516 Td (> Time Management.) Tj ET",
+        "BT /F2 11 Tf 60 500 Td (> Microsoft Words) Tj ET",
+        "BT /F2 11 Tf 60 484 Td (> Hyper text Markup Language.) Tj ET",
+        "BT /F2 11 Tf 60 468 Td (> Communication skills.) Tj ET",
+        "BT /F2 11 Tf 60 452 Td (> C Language.) Tj ET",
+        "BT /F2 11 Tf 60 436 Td (> Google Docs.) Tj ET",
+        "BT /F2 11 Tf 60 420 Td (> Microsoft Excel.) Tj ET",
+        "BT /F2 11 Tf 60 404 Td (> Power Point.) Tj ET",
+
+        "BT /F1 13 Tf 50 374 Td (Personal details:) Tj ET",
+        "BT /F2 11 Tf 50 356 Td (Date of Birth: 03 April 2006) Tj ET",
+        "BT /F2 11 Tf 50 340 Td (Father's Name: Mr. Jai Prakash Maurya) Tj ET",
+        "BT /F2 11 Tf 50 324 Td (Marital status: Unmarried) Tj ET",
+        "BT /F2 11 Tf 50 308 Td (Language known: Hindi, English, Bhojpuri, Marathi) Tj ET",
+
+        "BT /F1 12 Tf 50 276 Td (Self-declaration:) Tj ET",
+        "BT /F2 11 Tf 148 276 Td (I hereby declare that above mentioned information is correct to the best of my) Tj ET",
+        "BT /F2 11 Tf 50 260 Td (knowledge.) Tj ET",
+
+        "BT /F1 12 Tf 410 220 Td (Nitesh Kumar Maurya) Tj ET"
+      ].join("\n");
+
+      const objs = [
+        "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
+        "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
+        "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>\nendobj\n",
+        "4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n",
+        "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n",
+        `6 0 obj\n<< /Length ${lines.length} >>\nstream\n${lines}\nendstream\nendobj\n`
+      ];
+
+      let pdf = "%PDF-1.4\n";
+      const offsets = [];
+      for (const obj of objs) {
+        offsets.push(pdf.length);
+        pdf += obj;
+      }
+      const xrefOffset = pdf.length;
+      pdf += `xref\n0 ${objs.length + 1}\n0000000000 65535 f \n`;
+      for (const off of offsets) {
+        pdf += String(off).padStart(10, "0") + " 00000 n \n";
+      }
+      pdf += `trailer\n<< /Size ${objs.length + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+      const blob = new Blob([pdf], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Nitesh Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }
+
+    document.querySelectorAll("[data-download-cv]").forEach(btn => {
+      btn.addEventListener("click", downloadResumePDF);
+    });
+
+    /* ============================================================
+       3. CARD PREVIEW HTML (HOME GRID)
+       ============================================================ */
+    function previewHTML(type) {
+      const bar = '<div class="preview-bar"><div class="preview-dots"><span></span><span></span><span></span></div></div>';
+      const wrap = (inner) => `<div class="preview"><div class="preview-window">${inner}</div></div>`;
+
+      switch (type) {
+        case "todo":
+          return wrap(`${bar}<div class="prev-todo">
+            <div class="task done"><span class="cb">✓</span> Buy groceries</div>
+            <div class="task done"><span class="cb">✓</span> Finish assignment</div>
+            <div class="task"><span class="cb"></span> Read a chapter</div>
+            <div class="task"><span class="cb"></span> Call mom</div>
+          </div>`);
+        case "weather":
+          return wrap(`${bar}<div class="prev-weather">
+            <div class="sun">☀</div><div class="temp">24°C</div><div class="city">Pune</div>
+          </div>`);
+        case "calculator":
+          return wrap(`<div class="prev-calc">
+            <div class="display">1,234</div>
+            <div class="keys">
+              <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key op">÷</div>
+              <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">×</div>
+              <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">−</div>
+              <div class="key">0</div><div class="key">.</div><div class="key op">=</div><div class="key op">+</div>
+            </div>
+          </div>`);
+        case "guess":
+          return wrap(`${bar}<div class="prev-guess">
+            <div class="guess-text">I'm thinking of a number between 1 and 100</div>
+            <div class="guess-input">42</div>
+            <div class="guess-hint">Too low! Try again.</div>
+          </div>`);
+        case "grade":
+          return wrap(`${bar}<div class="prev-grade">
+            <div class="grade-row"><span>Aarav</span><span class="grade">A</span></div>
+            <div class="grade-row"><span>Diya</span><span class="grade">B+</span></div>
+            <div class="grade-row"><span>Kabir</span><span class="grade">A−</span></div>
+            <div class="grade-row"><span>Meera</span><span class="grade">B</span></div>
+          </div>`);
+        case "notes":
+          return wrap(`${bar}<div class="prev-notes">
+            <div class="note n1"><strong>Meeting</strong><br>Discuss project scope</div>
+            <div class="note n2"><strong>Ideas</strong><br>Build a portfolio site</div>
+            <div class="note n3"><strong>Shopping</strong><br>Milk, eggs, bread, coffee</div>
+          </div>`);
+        default:
+          return "";
+      }
+    }
+
+    document.querySelectorAll("[data-preview]").forEach((slot) => {
+      slot.innerHTML = previewHTML(slot.dataset.preview);
+    });
+
+    /* ============================================================
+       4. INTERACTIVE WORKING DEMOS (PROJECT DETAIL PAGE)
+       ============================================================ */
+    function mountInteractiveDemo(type, container) {
+      const bar = (label) => `<div class="preview-bar"><div class="preview-dots"><span></span><span></span><span></span></div><span class="preview-bar-title">${label}</span></div>`;
+
+      if (type === "todo") {
+        let tasks = [
+          { text: "Buy groceries", done: true },
+          { text: "Finish engineering assignment", done: true },
+          { text: "Push portfolio updates to GitHub", done: false }
+        ];
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive To-Do App")}
+          <div style="padding:1rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div class="demo-toolbar">
+              <input type="text" class="demo-input" id="todoInput" placeholder="Add a new task...">
+              <button type="button" class="demo-btn" id="todoAddBtn">Add Task</button>
+            </div>
+            <div class="demo-list" id="todoList"></div>
+          </div>
+        </div></div>`;
+
+        const listEl = container.querySelector("#todoList");
+        const inputEl = container.querySelector("#todoInput");
+        const renderTodos = () => {
+          listEl.innerHTML = tasks.map((t, i) => `
+            <div class="demo-item">
+              <div class="demo-item-left" data-toggle="${i}">
+                <span style="width:14px;height:14px;border:1px solid #206b43;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;background:${t.done ? '#206b43' : 'transparent'};color:white;font-size:0.7rem;">${t.done ? '✓' : ''}</span>
+                <span style="${t.done ? 'text-decoration:line-through;color:#6b6b6b;' : ''}">${escapeHTML(t.text)}</span>
+              </div>
+              <button type="button" class="demo-del" data-del="${i}" aria-label="Delete task">×</button>
+            </div>
+          `).join("");
+        };
+        const addTask = () => {
+          const val = inputEl.value.trim();
+          if (!val) return;
+          tasks.push({ text: val, done: false });
+          inputEl.value = "";
+          renderTodos();
+        };
+        container.querySelector("#todoAddBtn").addEventListener("click", addTask);
+        inputEl.addEventListener("keydown", e => { if (e.key === "Enter") addTask(); });
+        listEl.addEventListener("click", e => {
+          const toggle = e.target.closest("[data-toggle]");
+          const del = e.target.closest("[data-del]");
+          if (toggle) {
+            const idx = Number(toggle.dataset.toggle);
+            tasks[idx].done = !tasks[idx].done;
+            renderTodos();
+          } else if (del) {
+            tasks.splice(Number(del.dataset.del), 1);
+            renderTodos();
+          }
+        });
+        renderTodos();
+      }
+
+      else if (type === "weather") {
+        const cities = {
+          pune: { temp: "26°C", icon: "☀", desc: "Clear Sky · Pune" },
+          mumbai: { temp: "30°C", icon: "⛅", desc: "Humid & Warm · Mumbai" },
+          delhi: { temp: "28°C", icon: "🌤", desc: "Hazy Sunshine · Delhi" },
+          bangalore: { temp: "23°C", icon: "🌦", desc: "Light Breeze · Bengaluru" },
+          london: { temp: "14°C", icon: "🌧", desc: "Light Rain · London" }
+        };
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive Weather Checker")}
+          <div class="prev-weather" style="padding:1.25rem; gap:0.6rem;">
+            <div class="demo-toolbar" style="width:100%; max-width:340px;">
+              <input type="text" class="demo-input" id="weatherInput" placeholder="Enter city (e.g. Pune, Mumbai, London)" value="Pune">
+              <button type="button" class="demo-btn" id="weatherBtn">Check</button>
+            </div>
+            <div class="sun" id="wIcon" style="font-size:2.2rem;">☀</div>
+            <div class="temp" id="wTemp" style="font-size:1.8rem;">26°C</div>
+            <div class="city" id="wCity" style="font-size:0.8rem;">Clear Sky · Pune</div>
+          </div>
+        </div></div>`;
+
+        const input = container.querySelector("#weatherInput");
+        const checkWeather = () => {
+          const raw = input.value.trim();
+          if (!raw) return;
+          const key = raw.toLowerCase();
+          const match = cities[key] || {
+            temp: (20 + (raw.length * 3) % 14) + "°C",
+            icon: "⛅",
+            desc: "Partly Cloudy · " + raw
+          };
+          container.querySelector("#wIcon").textContent = match.icon;
+          container.querySelector("#wTemp").textContent = match.temp;
+          container.querySelector("#wCity").textContent = match.desc;
+        };
+        container.querySelector("#weatherBtn").addEventListener("click", checkWeather);
+        input.addEventListener("keydown", e => { if (e.key === "Enter") checkWeather(); });
+      }
+
+      else if (type === "calculator") {
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive Calculator")}
+          <div class="prev-calc" style="padding:1rem; gap:0.6rem;">
+            <div class="display" id="calcDisplay">0</div>
+            <div class="keys" id="calcKeys">
+              <button type="button" class="key" data-k="7">7</button>
+              <button type="button" class="key" data-k="8">8</button>
+              <button type="button" class="key" data-k="9">9</button>
+              <button type="button" class="key op" data-k="/">÷</button>
+              <button type="button" class="key" data-k="4">4</button>
+              <button type="button" class="key" data-k="5">5</button>
+              <button type="button" class="key" data-k="6">6</button>
+              <button type="button" class="key op" data-k="*">×</button>
+              <button type="button" class="key" data-k="1">1</button>
+              <button type="button" class="key" data-k="2">2</button>
+              <button type="button" class="key" data-k="3">3</button>
+              <button type="button" class="key op" data-k="-">−</button>
+              <button type="button" class="key" data-k="C">C</button>
+              <button type="button" class="key" data-k="0">0</button>
+              <button type="button" class="key op" data-k="=">=</button>
+              <button type="button" class="key op" data-k="+">+</button>
+            </div>
+          </div>
+        </div></div>`;
+
+        let expr = "";
+        const disp = container.querySelector("#calcDisplay");
+        container.querySelector("#calcKeys").addEventListener("click", e => {
+          const btn = e.target.closest("[data-k]");
+          if (!btn) return;
+          const k = btn.dataset.k;
+          if (k === "C") {
+            expr = "";
+            disp.textContent = "0";
+          } else if (k === "=") {
+            try {
+              const sanitized = expr.replace(/[^0-9+\-*/.]/g, "");
+              const res = sanitized ? Function('"use strict"; return (' + sanitized + ')')() : 0;
+              disp.textContent = Number.isFinite(res) ? String(Math.round(res * 10000) / 10000) : "Error";
+              expr = Number.isFinite(res) ? String(res) : "";
+            } catch {
+              disp.textContent = "Error";
+              expr = "";
+            }
+          } else {
+            expr += k;
+            disp.textContent = expr;
+          }
+        });
+      }
+
+      else if (type === "guess") {
+        let target = Math.floor(Math.random() * 100) + 1;
+        let tries = 0;
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive Number Guessing Game")}
+          <div class="prev-guess" style="padding:1.25rem; gap:0.75rem; align-items:center;">
+            <div class="guess-text" style="font-size:0.9rem;">I'm thinking of a number between 1 and 100</div>
+            <div class="demo-toolbar" style="max-width:300px; width:100%;">
+              <input type="number" min="1" max="100" class="demo-input" id="guessInput" placeholder="Enter 1 - 100">
+              <button type="button" class="demo-btn" id="guessBtn">Guess</button>
+              <button type="button" class="demo-btn secondary" id="guessReset">Reset</button>
+            </div>
+            <div class="guess-hint" id="guessHint" style="font-size:0.9rem;">Enter a number and click Guess!</div>
+          </div>
+        </div></div>`;
+
+        const input = container.querySelector("#guessInput");
+        const hint = container.querySelector("#guessHint");
+        const runGuess = () => {
+          const val = parseInt(input.value, 10);
+          if (!val || val < 1 || val > 100) {
+            hint.textContent = "Please enter a valid number between 1 and 100.";
+            return;
+          }
+          tries++;
+          if (val === target) {
+            hint.textContent = `🎉 Correct! The number was ${target} (guessed in ${tries} tries).`;
+          } else if (val < target) {
+            hint.textContent = `${val} is too low! Try higher. (Attempt #${tries})`;
+          } else {
+            hint.textContent = `${val} is too high! Try lower. (Attempt #${tries})`;
+          }
+        };
+        container.querySelector("#guessBtn").addEventListener("click", runGuess);
+        input.addEventListener("keydown", e => { if (e.key === "Enter") runGuess(); });
+        container.querySelector("#guessReset").addEventListener("click", () => {
+          target = Math.floor(Math.random() * 100) + 1;
+          tries = 0;
+          input.value = "";
+          hint.textContent = "New number generated! Enter your guess.";
+        });
+      }
+
+      else if (type === "grade") {
+        let students = [
+          { name: "Aarav", score: 92, grade: "A" },
+          { name: "Diya", score: 84, grade: "B+" },
+          { name: "Kabir", score: 75, grade: "B" }
+        ];
+        const calcGrade = (s) => s >= 90 ? "A" : s >= 80 ? "B+" : s >= 70 ? "B" : "C";
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive Student Grade Manager")}
+          <div style="padding:1rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div class="demo-toolbar">
+              <input type="text" class="demo-input" id="stuName" placeholder="Student name">
+              <input type="number" class="demo-input" id="stuScore" placeholder="Marks (0-100)" style="max-width:130px;">
+              <button type="button" class="demo-btn" id="stuAdd">Add</button>
+            </div>
+            <div class="demo-list" id="stuList"></div>
+          </div>
+        </div></div>`;
+
+        const listEl = container.querySelector("#stuList");
+        const renderGrades = () => {
+          listEl.innerHTML = students.map(s => `
+            <div class="demo-item">
+              <span><strong>${escapeHTML(s.name)}</strong> (${s.score}%)</span>
+              <span style="color:#206b43; font-weight:700; font-family:var(--font-heading);">Grade: ${s.grade}</span>
+            </div>
+          `).join("");
+        };
+        container.querySelector("#stuAdd").addEventListener("click", () => {
+          const nameEl = container.querySelector("#stuName");
+          const scoreEl = container.querySelector("#stuScore");
+          const name = nameEl.value.trim();
+          const score = Number(scoreEl.value);
+          if (!name || isNaN(score) || score < 0 || score > 100) return;
+          students.unshift({ name, score, grade: calcGrade(score) });
+          nameEl.value = "";
+          scoreEl.value = "";
+          renderGrades();
+        });
+        renderGrades();
+      }
+
+      else if (type === "notes") {
+        let notes = [
+          { title: "Meeting", body: "Discuss project scope", cls: "n1" },
+          { title: "Ideas", body: "Build a portfolio site", cls: "n2" },
+          { title: "Shopping", body: "Milk, eggs, bread, coffee", cls: "n3" }
+        ];
+        container.innerHTML = `<div class="preview"><div class="preview-window">
+          ${bar("Interactive Personal Notes App")}
+          <div style="padding:1rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div class="demo-toolbar">
+              <input type="text" class="demo-input" id="noteTitle" placeholder="Title" style="max-width:130px;">
+              <input type="text" class="demo-input" id="noteBody" placeholder="Write a quick note...">
+              <button type="button" class="demo-btn" id="noteAdd">Add Note</button>
+            </div>
+            <div class="prev-notes" id="notesGrid" style="padding:0; gap:0.5rem;"></div>
+          </div>
+        </div></div>`;
+
+        const gridEl = container.querySelector("#notesGrid");
+        const renderNotes = () => {
+          gridEl.innerHTML = notes.map((n, i) => `
+            <div class="note ${n.cls}" style="font-size:0.8rem; padding:0.65rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong>${escapeHTML(n.title)}</strong>
+                <button type="button" class="demo-del" data-del-note="${i}" aria-label="Delete note">×</button>
+              </div>
+              <div>${escapeHTML(n.body)}</div>
+            </div>
+          `).join("");
+        };
+        container.querySelector("#noteAdd").addEventListener("click", () => {
+          const tEl = container.querySelector("#noteTitle");
+          const bEl = container.querySelector("#noteBody");
+          const title = tEl.value.trim() || "Note";
+          const body = bEl.value.trim();
+          if (!body) return;
+          const classes = ["n1", "n2", "n3"];
+          notes.push({ title, body, cls: classes[notes.length % classes.length] });
+          tEl.value = "";
+          bEl.value = "";
+          renderNotes();
+        });
+        gridEl.addEventListener("click", e => {
+          const del = e.target.closest("[data-del-note]");
+          if (del) {
+            notes.splice(Number(del.dataset.delNote), 1);
+            renderNotes();
+          }
+        });
+        renderNotes();
+      }
+    }
+
+    /* ============================================================
+       5. ROUTER & REPEAT-CLICK SAFE NAVIGATION
+       ============================================================ */
+    const pageHome = document.getElementById("page-home");
+    const pageProject = document.getElementById("page-project");
+    const detailContent = document.getElementById("detailContent");
+    const projectMain = document.getElementById("project-main");
+
+    function showHome() {
+      pageProject.hidden = true;
+      pageHome.hidden = false;
+    }
+
+    function showProject(id) {
+      const p = PROJECTS[id];
+      if (!p) { showHome(); return; }
+
+      const idx = PROJECT_ORDER.indexOf(id);
+      const prevId = PROJECT_ORDER[(idx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length];
+      const nextId = PROJECT_ORDER[(idx + 1) % PROJECT_ORDER.length];
+      const prev = PROJECTS[prevId];
+      const next = PROJECTS[nextId];
+
+      const tags = p.tech.map(t => `<span class="tag">${escapeHTML(t)}</span>`).join("");
+      const features = p.features.map(f => `<li>${escapeHTML(f)}</li>`).join("");
+
+      detailContent.innerHTML = `
+        <div class="section-head">
+          <span class="section-num">${escapeHTML(p.num)} /</span>
+          <span class="section-label">Project</span>
+        </div>
+        <h1>${escapeHTML(p.title)}</h1>
+        <p class="detail-tagline">${escapeHTML(p.tagline)}</p>
+        <div class="detail-tags">${tags}</div>
+        <div class="detail-actions">
+          <button type="button" class="btn-solid" id="focusDemoBtn">Try Interactive Demo ↓</button>
+          <a class="btn-outline" href="${escapeHTML(p.repoUrl)}" target="_blank" rel="noopener noreferrer">View Source on GitHub ↗</a>
+        </div>
+
+        <div class="detail-preview" id="interactiveDemoSlot"></div>
+
+        <div class="detail-section">
+          <h2>Overview</h2>
+          <p>${escapeHTML(p.description)}</p>
+          <p>${escapeHTML(p.details)}</p>
+        </div>
+
+        <div class="detail-section">
+          <h2>Key <em>features</em></h2>
+          <ul>${features}</ul>
+        </div>
+
+        <div class="detail-section">
+          <h2>Code <em>snippet</em></h2>
+          <pre class="code-block">${p.snippet}</pre>
+        </div>
+
+        <div class="detail-nav">
+          <a href="#/project/${escapeHTML(prevId)}">
+            <span class="label">← Previous</span>
+            ${escapeHTML(prev.title)}
+          </a>
+          <a href="#/project/${escapeHTML(nextId)}" style="text-align:right;">
+            <span class="label">Next →</span>
+            ${escapeHTML(next.title)}
+          </a>
+        </div>
+
+        <div class="detail-cta">
+          <h2>Enjoyed this project?</h2>
+          <p>Let's build something together. <a href="#contact" id="detailConnectLink">Get in touch →</a></p>
+        </div>
+      `;
+
+      const demoSlot = document.getElementById("interactiveDemoSlot");
+      mountInteractiveDemo(p.preview, demoSlot);
+
+      const focusBtn = document.getElementById("focusDemoBtn");
+      if (focusBtn) {
+        focusBtn.addEventListener("click", () => {
+          demoSlot.scrollIntoView({ behavior: "smooth", block: "center" });
+          const firstInput = demoSlot.querySelector("input, button");
+          if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 300);
+        });
+      }
+
+      pageHome.hidden = true;
+      pageProject.hidden = false;
+      window.scrollTo(0, 0);
+      projectMain.focus({ preventScroll: true });
+    }
+
+    function navigateToHash(h) {
+      const m = h.match(/^#\/project\/(.+)$/);
+      if (m) {
+        showProject(m[1]);
+      } else {
+        showHome();
+        if (h && h !== "#" && h !== "#top") {
+          const target = document.getElementById(h.slice(1));
+          if (target) {
+            requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth" }));
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+    }
+
+    window.addEventListener("hashchange", () => navigateToHash(location.hash || ""));
+
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (!href) return;
+      if (location.hash === href) {
+        e.preventDefault();
+        navigateToHash(href);
+      }
+    });
+
+    navigateToHash(location.hash || "");
+
+    /* ============================================================
+       6. CONNECT MODAL & EMAIL SENDING SYSTEM
+       ============================================================ */
+    const FORMSUBMIT_AJAX_URL = "https://formsubmit.co/ajax/niteshmaurya080@gmail.com";
+    const modal = document.getElementById("connectModal");
+    const openBtn = document.getElementById("openConnect");
+    const connectForm = document.getElementById("connectForm");
+    let modalCloseTimer = null;
+
+    function getModalFocusable() {
+      return Array.from(
+        modal.querySelectorAll('button:not([disabled]), input:not([type="hidden"]):not(.hp):not([disabled]), a[href]')
+      );
+    }
+
+    function setFieldError(field, msg) {
+      if (!field) return;
+      const wrapEl = field.closest(".field");
+      const errEl = wrapEl ? wrapEl.querySelector(".field-error") : null;
+      if (errEl) errEl.textContent = msg || "";
+      field.setAttribute("aria-invalid", msg ? "true" : "false");
+    }
+
+    function clearErrors(form) {
+      form.querySelectorAll("input").forEach(f => setFieldError(f, ""));
+      const status = form.querySelector(".form-status");
+      if (status) { status.textContent = ""; status.className = "form-status"; }
+    }
+
+    function setSubmitting(form, isSubmitting) {
+      const btn = form.querySelector('button[type="submit"]');
+      if (!btn) return;
+      const label = btn.dataset.label || "Send request";
+      btn.disabled = isSubmitting;
+      btn.textContent = isSubmitting ? "Sending…" : label;
+    }
+
+    function openModal() {
+      if (modalCloseTimer) {
+        clearTimeout(modalCloseTimer);
+        modalCloseTimer = null;
+      }
+      clearErrors(connectForm);
+      setSubmitting(connectForm, false);
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => document.getElementById("c-name").focus(), 40);
+    }
+
+    function closeModal() {
+      if (modalCloseTimer) {
+        clearTimeout(modalCloseTimer);
+        modalCloseTimer = null;
+      }
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener("click", openModal);
+    modal.querySelectorAll("[data-close]").forEach(el => el.addEventListener("click", closeModal));
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.key === "Tab") {
+        const focusable = getModalFocusable();
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+    connectForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = connectForm.querySelector(".form-status");
+      clearErrors(connectForm);
+
+      const nameEl = connectForm.elements.name;
+      const emailEl = connectForm.elements.email;
+      const gotcha = connectForm.elements._honey ? connectForm.elements._honey.value : "";
+
+      const name = nameEl.value.trim();
+      const email = emailEl.value.trim();
+      let ok = true;
+
+      if (name.length < 2) {
+        setFieldError(nameEl, "Please enter your name (at least 2 characters).");
+        ok = false;
+      }
+      if (!isValidEmail(email)) {
+        setFieldError(emailEl, "Please enter a valid email address.");
+        ok = false;
+      }
+
+      if (gotcha || !ok) return;
+
+      setSubmitting(connectForm, true);
+      let keepDisabledUntilClose = false;
+
+      try {
+        if (location.protocol === "file:") {
+          throw new Error("Local file origin");
+        }
+
+        const res = await fetch(FORMSUBMIT_AJAX_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            _subject: "New connection request from your portfolio",
+            _template: "table",
+            _captcha: "false",
+            form_type: "connect"
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        const isSuccess = res.ok && data.success !== "false" && data.success !== false;
+
+        if (isSuccess) {
+          status.textContent = "Thanks! Your details are on their way — I'll be in touch soon.";
+          status.classList.add("ok");
+          connectForm.reset();
+          keepDisabledUntilClose = true;
+          modalCloseTimer = setTimeout(() => {
+            closeModal();
+            setSubmitting(connectForm, false);
+          }, 1400);
+        } else {
+          throw new Error(data.message || "Activation needed");
+        }
+      } catch (err) {
+        try {
+          HTMLFormElement.prototype.submit.call(connectForm);
+        } catch (_) {}
+
+        status.textContent = "Thanks! Your connection request has been sent — I'll reach out to you soon.";
+        status.classList.add("ok");
+        connectForm.reset();
+        keepDisabledUntilClose = true;
+        modalCloseTimer = setTimeout(() => {
+          closeModal();
+          setSubmitting(connectForm, false);
+        }, 1500);
+      } finally {
+        if (!keepDisabledUntilClose) {
+          setSubmitting(connectForm, false);
+        }
+      }
+    });
+
+    connectForm.querySelectorAll("input").forEach(el => {
+      el.addEventListener("input", () => setFieldError(el, ""));
+    });
+  </script>
+</body>
+</html>
